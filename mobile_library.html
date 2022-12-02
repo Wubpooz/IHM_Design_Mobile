@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Plantera</title>
+        <meta name="description" content="truc pour les plantes">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <style>
+        body{
+            background-color: var(--bg);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        :root{
+            --bg : rgb(231 237 222);
+            --contrast : rgb(34 71 34);
+            --text : rgb(196 222 169);
+        }
+
+        
+
+        .main{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+        }
+        .plant{
+            grid-row-start: 1;
+            grid-row-end: 3;
+            width: 45vw;
+            height: 80vh;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 0 4px 2px var(--text);
+        }
+
+        .wrapper{
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-around;
+
+        }
+        .descr{
+            text-align: left;
+            margin: .5em;
+            padding: .3em;
+            color: var(--contrast);
+            background-color: var(--text);
+            border : none;
+            font-size: large;
+            border-radius: 14px;
+
+            
+        }
+
+        .checked {
+            color: orange;
+        }
+        .rating{
+            margin-top: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: x-large;
+        }
+        
+        .title{
+            color : var(--contrast);
+            font-size: 21px;
+            font-weight: 800;
+            margin-top: 0;
+        }
+
+        .dl{
+            margin-top: 5.4em;
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+        }
+        .dl:hover{
+            filter: invert(.3);
+            cursor: pointer;
+        }
+        .dl:active{
+            filter: invert(.1);
+        }
+
+        .search-container {
+            float: none;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        form{
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type=text] {
+            padding: 0;
+            margin-top: 0;
+            font-size: 17px;
+            border: none;
+        }
+
+        .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+            padding: 14px;
+            background-color: white;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #ccc;
+        }
+        .back_btn{
+            width: 1.4em;
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+            float: left;
+            margin-top: 0.65em;
+        }
+
+    </style>
+
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <a href="mobile_home.html"><img class="back_btn" src="back.png" alt="back"></a>
+        <div class="search-container">
+            <form>
+            
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+        
+            <div class="main">
+                <img class="plant" src="plant.jpg" alt="plant">
+                <div class="wrapper">
+                    <p class="title">Caractéristiques</p>
+                    <div class="descr">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum doloremque explicabo ratione commodi fugiat ex vero voluptas, consequatur voluptatem eius sint! Consequuntur quam dolorem praesentium nesciunt aliquam iste culpa dignissimos.
+                    </div>
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                    <img class="dl" src="download.png" alt="download">          
+                </div>
+            </div>
+        
+    </body>
+</html>

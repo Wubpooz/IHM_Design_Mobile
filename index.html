@@ -13,8 +13,13 @@
     </head>
     <style>
         body{
-            background-color: beige;
+            background-color: var(--bg);
             font-family: Arial, Helvetica, sans-serif;
+        }
+        :root{
+            --bg : rgb(231 237 222);
+            --contrast : rgb(34 71 34);
+            --text : rgb(196 222 169);
         }
 
         .tasks{
@@ -27,15 +32,25 @@
             list-style-type: none;
             align-items :center;
             margin-top: 4em;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
             
         }
         .task{
-            background-color: rgb(14,170,30);
-            color : white;
+            background-color: var(--contrast);
+            color : var(--text);
             font-weight: 700;
             font-size: larger;
             padding: 1em;
             border : 1px solid white;
+        }
+        .task:hover{
+            cursor: pointer;
+            filter : invert(.05);
+        }
+        .task:active{
+            filter:blur(1px);
         }
 
         .sugg{
@@ -43,11 +58,67 @@
             display: flex;
             align-content: center;
             justify-content: center;
-            padding: 2.5em;
-            padding-left: 1em;
-            padding-right: 1em;
-            border: 1px solid black;
+        }
+        .sugg_container{
+            font-weight: 900;
+            font-size: x-large;
+            font-variant :small-caps;
+            padding: 30vw;
+            padding-top: .6vh;
+            padding-bottom: 30vh;
             color : black;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px 5px rgb(175, 175, 175);
+        }
+
+        .bottom{
+            display: flex;
+            align-content: center;
+            justify-content: space-between;
+            margin-top:90%;
+            position: fixed;
+            bottom: 0;
+            left: 0;  /*specific to flexbox to give room*/
+            right: 0; /*specific to flexbox to give room*/
+            padding-left: .6em;
+            padding-right: .6em;
+            padding-bottom: .5em;
+        }
+
+        .add_btn{
+            background-color: var(--contrast);
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+            border-radius: 15px;
+        }
+        .add_btn:hover{
+            cursor: pointer;
+            background-color: var(--text)
+        }
+        .add_btn:active{
+            filter: invert(.1);
+        }
+
+        .calendar_btn{
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+        }
+        .calendar_btn:hover{
+            filter: invert(.3);
+            cursor: pointer;
+        }
+        .calendar_btn:active{
+            filter: invert(.1);
+        }
+
+        .cards_btn{
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+        }
+        .cards_btn:hover{
+            filter: invert(.3);
+            cursor: pointer;
+        }
+        .cards_btn:active{
+            filter: invert(.1);
         }
 
     </style>
@@ -64,13 +135,14 @@
         </div>
 
         <div class="sugg">
-            Suggestions
+            <p class="sugg_container"> Suggestions</p>
+            
         </div>
 
         <div class="bottom">
-            <img src="" alt="plus">
-            <img src="" alt="calendar">
-            <img src="" alt="biblio">
+            <img class="add_btn" src="add.png" alt="plus">
+            <img class="calendar_btn" src="calendar.png" alt="calendar">
+            <img class="cards_btn" src="library.png" alt="bilbio">
         </div>
         
         <script src="" async defer></script>

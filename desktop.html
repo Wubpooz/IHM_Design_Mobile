@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Plantera</title>
+        <meta name="description" content="truc pour les plantes">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+        body{
+            background-color: var(--bg);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        :root{
+            --bg : rgb(231 237 222);
+            --contrast : rgb(34 71 34);
+            --text : rgb(196 222 169);
+        }
+
+        .sugg{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+        }
+        .sugg_container{
+            margin-top:0;
+            padding: 17.5vw;
+            padding-top: .6vh;
+            padding-bottom: 20vh;
+            color : black;
+            border-radius: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px 5px rgb(175, 175, 175);
+            
+            font-size: xx-large;
+            font-weight: 700;
+            color: var(--contrast);
+        }
+
+
+
+
+        .langchang{
+            left : 0;
+            right: 100vw;
+            overflow: hidden;
+            top : 0;
+            margin-bottom: 2.8em;
+        }
+
+        .langbutton{
+            float : right;
+            background-color: var(--bg-color);
+            color: var(--rest-text-color);
+            transition: all 0.3s ease-in-out;
+            border: none;
+            font-weight: 500;
+            line-height: 1.25em;
+            list-style: none;
+            font-size: inherit;
+            padding: 0.375em 0.688em;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+            word-wrap: break-word;    
+            padding-inline: 0.3em;
+            padding-bottom: 0;
+            padding-top: 0.1667em;
+            
+
+            /* version with background matching the navbar (+ invert(1-x) for the svg)
+            background-color: var(--bar-bg-color);  
+            border-top: 1px solid black;
+            border-end-start-radius: 0.41667em;
+            border-start-end-radius: 0;
+            border-start-start-radius: 0.041667em;
+            border-end-end-radius: 0.125em;*/
+
+        }
+
+        .lang_img{
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+            width : 5em; 
+            height : 3em;
+        }
+
+        .langbutton:hover .lang_img{
+            filter : invert(.3);
+            cursor: pointer;
+        }
+
+        .langbutton:active .lang_img {
+            filter : invert(.1);
+            transition: none 0s;
+        }
+        .search-container {
+            float: none;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        form{
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type=text] {
+            padding: 0;
+            margin-top: 0;
+            font-size: 17px;
+            border: none;
+            width: 49em;
+            padding-left: 6px;
+        }
+
+        .search-container button {
+            float: none;
+            display: block;
+            text-align: left;
+            margin: 0;
+            padding: 14px;
+            background-color: white;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #ccc;
+        }
+        
+        .cards_btn{
+            padding-top: 0.1667em;
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+        }
+        .cards_btn:hover{
+            filter: invert(.3);
+            cursor: pointer;
+        }
+        .cards_btn:active{
+            filter: invert(.1);
+        }
+
+
+        .top{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+
+       
+
+
+
+.offset {
+
+}
+
+.outer {
+  position:relative;
+}
+
+.calendar {
+    background-color: white;
+grid-row-start: 1;
+grid-row-end: 3;
+  max-width: 1280px;
+  min-width: 500px;
+  height: fit-content;
+  box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.2) ,0px 3px 7px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.wrap {
+
+  overflow-x: hidden;
+    max-width: 1280px;
+  height: 15em;
+  border-radius: 8px;
+}
+
+thead {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+thead th {
+
+  text-align: center;
+  width: 100%;
+
+}
+
+header {
+  background: #fff;
+  padding: 1rem;
+  color: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0px 0px;
+}
+
+header h1 {
+ font-size: 1.25rem;
+ text-align: center;
+ font-weight: normal;
+
+}
+tbody {
+    position: relative;
+}
+table {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+}
+
+
+
+.headcol {
+  width: 60px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 0.25rem 0;
+  text-align: center;
+  border: 0;
+  position: relative;
+  top: -12px;
+  border-bottom: 1px solid transparent;
+}
+
+thead th {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.9);
+  padding: 1rem;
+}
+
+thead {
+    z-index: 2;
+    background: white;
+    border-bottom: 2px solid #ddd;
+
+}
+
+tr, tr td {
+  height: 20px;
+}
+td {
+  text-align: center;
+}
+tr:nth-child(odd) td:not(.headcol) {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+tr:nth-child(even) td:not(.headcol) {
+  border-bottom: 1px solid #eee;
+}
+
+tr td {
+  border-right: 1px solid #eee;
+  padding: 0;
+  white-space: none;
+  word-wrap: nowrap;
+}
+
+tbody tr td {
+  position: relative;
+  vertical-align: top;
+  height: 40px;
+  width: auto;
+
+}
+
+.secondary {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+.checkbox {
+   display: none;
+}
+
+.checkbox + label {
+    border: 0;
+    outline: 0;
+    width: 100px;
+    heigth: 100px;
+    background: white;
+    color: transparent;
+    display:block;
+  display: none;
+}
+
+.checkbox:checked + label {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    heigth: 100%;
+    background: red;
+    color: transparent;
+    display: inline-block;
+}
+
+.event {
+  background: #00B4FC;
+  color: white;
+  border-radius: 2px;
+  text-align: left;
+  font-size: 0.875rem;
+  z-index: 2;
+  padding: 0.5rem;
+  overflow-x: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.event:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  background: #00B4FC;
+}
+
+.event.double {
+  height: 180px;
+  text-align: inherit;
+}
+
+
+
+td:hover:after {
+  content: "+";
+  vertical-align: middle;
+  font-size: 1.875rem;
+  font-weight: 100;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+button.secondary {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 0.5rem 0.75rem;
+  font-size: 14px;
+  border-radius: 2px;
+  color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button.secondary:hover {
+  background: #fafafa;
+}
+button.secondary:active {
+  box-shadow: none;
+}
+button.secondary:focus {
+  outline: 0;
+}
+
+tr td:nth-child(2), tr td:nth-child(3), .past {
+  background: #fafafa;
+}
+
+.today {
+  color: red;
+}
+
+.now {
+  box-shadow: 0px -1px 0px 0px red;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin: 0 1rem;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+.icon:hover {
+  color: red;
+}
+
+
+.add_btn{
+            background-color: var(--contrast);
+            filter: opacity(0.6) drop-shadow(0 0 0 var(--contrast));
+            border-radius: 15px;
+        }
+        .add_btn:hover{
+            cursor: pointer;
+            background-color: var(--text)
+        }
+        .add_btn:active{
+            filter: invert(.1);
+        }
+    
+
+        .grid{
+            margin-top: 150px;
+            margin-left: 10px;
+            margin-right: 10px;
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            justify-items: center;
+            grid-gap: 50px;
+        }
+        .add{
+            text-align: center;
+            width: 97%;
+            border-radius: 12px;
+            box-shadow: 0 0 4px 2px var(--text);
+            background-color: white;
+        }
+        .add_ctn{
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+        .input{
+            background-color: var(--text);
+            height : 15.7em;
+            /*border: 1px solid var(--text);*/
+            border : none;
+            box-shadow: 0 0 2px 1px white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+            color: var(--contrast);
+        }
+        .input:focus-within{
+            outline: none;
+        }
+        .title{
+            font-size: xx-large;
+            font-weight: 700;
+            color: var(--contrast);
+        }
+
+    </style>
+
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="top">
+            <a href="mobile_library.html""><img class="cards_btn" src="library.png" alt="bilbio"></a>
+            <div class="search-container">
+                <form>
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div id="langchang" class="langchang">
+                <button class="langbutton"><img src="language-solid.svg" width="90" height="72" class="lang_img" alt="change_lang"></button>          
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <div class="calendar">
+                <p style="text-align:center; color:var(--contrast);font-size: xx-large;
+                font-weight: 700;"> Rappels :</p>
+                <header>
+                    <button class="secondary" style="align-self: flex-start; flex: 0 0 1">Today</button>
+                    <div class="calendar__title" style="display: flex; justify-content: center; align-items: center">
+                      <div class="icon secondary chevron_left">‹</div>
+                      <h1 class="" style="flex: 1;"><span></span><strong>18 JAN – 24 JAN</strong> 2022</h1>
+                      <div class="icon secondary chevron_left">›</div>
+                    </div> 
+                    <div style="align-self: flex-start; flex: 0 0 1"></div>
+                </header>
+                
+                <div class="outer">
+              
+                
+                <table>
+                <thead>
+                  <tr>
+                    <th class="headcol"></th>
+                    <th>Mon, 18</th>
+                    <th>Tue, 19</th>
+                    <th class="today">Wed, 20</th>
+                    <th>Thu, 21</th>
+                    <th>Fri, 22</th>
+                    <th class="secondary">Sat, 23</th>
+                    <th class="secondary">Sun, 24</th>
+                  </tr>
+                </thead>
+                </table>
+              
+              <div class="wrap"> 
+                <table class="offset">
+              
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="past"></td>
+                    <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>Arroser Lilas</div></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              </div>
+              </div>
+              
+
+
+            <div class="add">
+                <p class="title">Ajouter une plante :</p>
+                <div class="add_ctn">
+                    <a href="mobile_add.html"><img class="add_btn" src="add.png" alt="plus"></a>
+                    <textarea class="input" id="story" name="story" rows="5" cols="19"placeholder="Description"></textarea>
+                </div>
+            </div>
+
+            <div class="sugg">
+                <p class="sugg_container"> Suggestions</p> 
+            </div>
+        </div>
+        
+        
+    </body>
+</html>

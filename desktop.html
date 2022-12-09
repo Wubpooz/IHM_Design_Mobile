@@ -157,14 +157,6 @@
         }
 
 
-       
-
-
-
-.offset {
-
-}
-
 .outer {
   position:relative;
 }
@@ -300,7 +292,7 @@ tbody tr td {
     border: 0;
     outline: 0;
     width: 100px;
-    heigth: 100px;
+    height: 100px;
     background: white;
     color: transparent;
     display:block;
@@ -311,7 +303,7 @@ tbody tr td {
     border: 0;
     outline: 0;
     width: 100%;
-    heigth: 100%;
+    height: 100%;
     background: red;
     color: transparent;
     display: inline-block;
@@ -415,7 +407,7 @@ tr td:nth-child(2), tr td:nth-child(3), .past {
     
 
         .grid{
-            margin-top: 150px;
+            margin-top: 50px;
             margin-left: 10px;
             margin-right: 10px;
             display: grid;
@@ -454,6 +446,19 @@ tr td:nth-child(2), tr td:nth-child(3), .past {
             color: var(--contrast);
         }
 
+        .moderators{
+          display: flex;
+          margin-left: .6em;
+          justify-content :space-around;
+          align-content :center;
+          flex: 1 1 auto;
+          width: 40vw;
+        }
+        .modos{
+          border-radius: 40px;
+          width: 5em;
+        }
+
     </style>
 
     <body>
@@ -472,6 +477,15 @@ tr td:nth-child(2), tr td:nth-child(3), .past {
                 <button class="langbutton"><img src="language-solid.svg" width="90" height="72" class="lang_img" alt="change_lang"></button>          
             </div>
         </div>
+
+        
+        <div class="moderators">
+          <p style="color: var(--contrast); font-weight: 700;font-size: x-large;">Modérateurs :</p>
+            <img class ="modos" src="/IMG_7141.jpeg" style="z-index: 2;"alt="">
+            <img class="modos" src="/IMG_7142.jpeg" style="z-index: 1;transform: translateX(-60px);filter: opacity(.77);" alt="">
+            <img class="modos" src="/IMG_7143.jpeg" style="transform: translateX(-120px);z-index: 0;filter: opacity(.7);"alt="">
+        </div>
+
 
         <div class="grid">
 

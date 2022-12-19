@@ -11,6 +11,22 @@
         <meta name="description" content="truc pour les plantes">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> 
+        <script>
+          $(document).ready(function(){
+              $('.filt_btn').click( function() {
+              if($(this).hasClass('active')){
+                $('.filt_btn').removeClass('active');
+              }
+              else{
+                $('.filt_btn').removeClass('active');
+                $(this).toggleClass('active');
+              }
+              });
+          });
+        </script>
     </head>
     <style>
         body{
@@ -51,7 +67,6 @@
             right: 100vw;
             overflow: hidden;
             top : 0;
-            margin-bottom: 2.8em;
         }
 
         .langbutton{
@@ -104,7 +119,6 @@
         .search-container {
             float: none;
             margin-top: 5px;
-            margin-bottom: 20px;
         }
 
         form{
@@ -449,14 +463,39 @@ tr td:nth-child(2), tr td:nth-child(3), .past {
         .moderators{
           display: flex;
           margin-left: .6em;
-          justify-content :space-around;
+          justify-content :space-evenly;
           align-content :center;
           flex: 1 1 auto;
-          width: 40vw;
+          width: fit-content;
+          gap: 14px;
         }
         .modos{
           border-radius: 40px;
           width: 5em;
+        }
+
+        .filters{
+          display: flex;
+          justify-content: space-evenly;
+          align-content :center;
+          flex: 1 1 auto;
+          margin-left: 15vw;
+          margin-right: 15vw;
+          margin-top: .6em;
+          margin-bottom: 2.2em;
+        }
+        .filt_btn{
+          border-radius: 15px;
+          padding-inline: 1.2em;
+          padding-block: .6em;
+          border: none;
+          color: var(--contrast);
+          background-color: var(--text);
+        }.filt_btn:hover{
+          filter: brightness(1.1);
+        }.filt_btn.active{
+          background-color: var(--contrast);
+          color: var(--text);
         }
 
     </style>
@@ -478,12 +517,21 @@ tr td:nth-child(2), tr td:nth-child(3), .past {
             </div>
         </div>
 
+
+        <div class="filters">
+          <button class="filt_btn">Saison</button>
+          <button class="filt_btn">Légumes</button>
+          <button class="filt_btn">Fruits</button>
+          <button class="filt_btn">Fleurs</button>
+          <button class="filt_btn">Trendy</button>
+
+        </div>
         
         <div class="moderators">
           <p style="color: var(--contrast); font-weight: 700;font-size: x-large;">Modérateurs :</p>
             <img class ="modos" src="/IMG_7141.jpeg" style="z-index: 2;"alt="">
-            <img class="modos" src="/IMG_7142.jpeg" style="z-index: 1;transform: translateX(-12.75em);filter: opacity(.77);" alt="">
-            <img class="modos" src="/IMG_7143.jpeg" style="transform: translateX(-25.5em);z-index: 0;filter: opacity(.7);"alt="">
+            <img class="modos" src="/IMG_7142.jpeg" style="z-index: 1;transform: translateX(-60px);filter: opacity(.77);" alt="">
+            <img class="modos" src="/IMG_7143.jpeg" style="transform: translateX(-120px);z-index: 0;filter: opacity(.7);"alt="">
         </div>
 
 
@@ -554,7 +602,6 @@ tr td:nth-child(2), tr td:nth-child(3), .past {
                 <img src="/IMG_7144.webp" alt="" width="159" height="200" style="text-align: center;margin-top: 1em;margin-left: 15px;">
             </div>
         </div>
-        
-        
+
     </body>
 </html>
